@@ -1,3 +1,5 @@
+# Esto fue un dolor de cabeza, pero al final lo logré.
+
 import cv2
 import torch
 from pathlib import Path
@@ -20,22 +22,24 @@ def detect_objects(img, arduino):
     
     # Controlar los LEDs del Arduino
     if 'wall' in result_data["name"].values:
-        arduino.write(b'1')  # Enviar comando para encender el LED en el puerto 3 (wall)
+        arduino.write(b'1')  # Vi (wall)
     else:
-        arduino.write(b'0')  # Enviar comando para apagar el LED en el puerto 3 (wall)
+        arduino.write(b'0')  # No vi (wall)
 
     if 'candle' in result_data["name"].values:
-        arduino.write(b'2')  # Enviar comando para encender el LED en el puerto 2 (candle)
+        arduino.write(b'2')  # Vi (candle)
     else:
-        arduino.write(b'3')  # Enviar comando para apagar el LED en el puerto 2 (candle)
+        arduino.write(b'3')  # No vi (candle)
 
     return result_data
 
 # Abrir la cámara
 cap = cv2.VideoCapture(0)
 
-# Inicializar conexión con el Arduino
-arduino = serial.Serial('COM7', 9600)  # Reemplaza 'COM3' con el puerto serial correcto
+# Inicializar conexión con el Arduino (Cambiar el puerto serial si es necesario, viene en la esquina del IDE de Arduino)
+arduino = serial.Serial('COM7', 9600)  # Reemplaza 'COM7' por el puerto serial de tu Arduino
+
+# NO MODIFICAR, variables para el control del tiempo de ejecución.
 
 while True:
     start_time = time.time()
