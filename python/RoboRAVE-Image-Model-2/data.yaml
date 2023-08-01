@@ -1,0 +1,13 @@
+names:
+- candle
+- wall
+nc: 2
+roboflow:
+  license: Public Domain
+  project: roborave-image-model
+  url: https://universe.roboflow.com/roberto-priego-bautista-93gsj/roborave-image-model/dataset/2
+  version: 2
+  workspace: roberto-priego-bautista-93gsj
+test: ../test/images
+train: RoboRAVE-Image-Model-2/train/images
+val: RoboRAVE-Image-Model-2/valid/images
