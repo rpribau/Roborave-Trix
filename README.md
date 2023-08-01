@@ -60,8 +60,12 @@ Penalty Rules:
 
 See the scoring matrix below for details on how points are assessed during your run. 2 LAST EDIT: January 1, 2020 
 
+![scoring matrix] (images/scoring-natrix.png)
+
 The top eight teams will compete in the final tournament. 
 
 ● Advancing teams will be seeded into the tournament bracket according to their aggregate score (see bracket below).
+
+![tournament bracket] (images/tournament-bracket.png)
 
 ● Runner Up is used to determine 3rd place based on outcome of semi-finals.
