@@ -60,7 +60,7 @@ Penalty Rules:
 
 See the scoring matrix below for details on how points are assessed during your run. 2 LAST EDIT: January 1, 2020 
 
-![scoring matrix](images/scoring-natrix.png)
+![scoring matrix](images/scoring-matrix.png)
 
 The top eight teams will compete in the final tournament. 
 
