@@ -9,7 +9,7 @@ Requirements
 
 Autonomous robot, any platform, costing $1,500 USD or less, and meets the following design constraints, which will be verified during Check-In or at the track: 
 
-Check-In: 
+## Check-In: 
 
 1) Robot can demonstrate it is running a program that can control the start and stop of its extinguishing system via a sensor that interacts with either the candle or the circle the candle is placed on. 
 2) If you use a high speed propeller you can only use a maximum diameter of 12cm, the robot must have a safety guard in place. 
@@ -34,7 +34,7 @@ The Candles
 ● The candles stand at the center of a white vinyl circle, indicated by a 5 cm diameter black circle, with varying heights between 10cm and 45 cm. 
 ● The circle has a 40 cm diameter, and has a 2.5 cm black line that is 2.5cm in from the outer edge.
 
-The Walls 
+## The Walls 
 
 ● The wall widths vary from 20 cm to 35cm and are 40 cm tall. They are held up by wooden bases that are 3.5 cm tall and may span the approximate width of the wall. 
 
@@ -42,7 +42,7 @@ All Challenge Dimensions are Approximate
 
 The challenge may be held in areas with natural light present which may change the lighting conditions of the track. Be prepared to engineer around this natural condition. 
 
-Scoring 
+## Scoring 
 
 The “remaining time bonus” is awarded, if and only if , all four candles are extinguished. Otherwise, the team receives only the points for candles extinguished. 
 
