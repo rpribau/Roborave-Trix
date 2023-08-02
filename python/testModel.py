@@ -9,7 +9,7 @@ import time
 import serial
 
 # Cargar el modelo personalizado desde el archivo .pt
-model = torch.hub.load('ultralytics/yolov5', 'custom', path='python/yolov5/best.pt')
+model = torch.hub.load('ultralytics/yolov5', 'custom', path='python/best.pt')
 
 # Clases específicas que puede detectar el modelo
 CLASSES = ['wall', 'candle']
