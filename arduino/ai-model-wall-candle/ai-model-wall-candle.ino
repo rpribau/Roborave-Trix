@@ -1,43 +1,81 @@
-/* ESTE ES UN ESQUELETO PARA PODER TRABAJAR CON EL ARCHIVO DE /python/testModel.py. */
+char command;
+int in1 = 11;
+int in2 = 12;
+int EnA = 10;
+int motorSpeed = 0;
+int voltage11 = 0;
+int voltage12 = 0;
+int voltage10 = 0;
 
-/* Lo que manda el archivo testModel.py es lo siguiente:
- *  
- *  0 = No hay pared
- *  1 = Hay pared
- *  2 = Hay vela
- *  3 = No hay vela
- */
-
-#include <Arduino.h>
-#include "arduino/headers/motor_control.h"
+int in3 = 13;
+int in4 = 8;
+int EnB = 9;
+int motor2Speed = 0;
 
 void setup()
 {
-  Serial.begin(9600);
-  setupMotors(); // Configurar los pines de los motores
+  pinMode(in1, OUTPUT);
+  pinMode(in2, OUTPUT);
+  pinMode(EnA, OUTPUT);
+  
+  pinMode(in3, OUTPUT);
+  pinMode(in4, OUTPUT);
+  pinMode(EnB, OUTPUT);
+
+  Serial.begin(9600);  // Inicializar comunicación serial a 9600 bps
 }
 
 void loop()
 {
-  // Tu código de detección de objetos aquí
+  // Leer los valores analógicos de los pines 11, 12 y 10
+  voltage11 = analogRead(11);
+  voltage12 = analogRead(12);
+  voltage10 = analogRead(10);
 
-  // Ejemplo de control de motores según la detección
-  // Suponemos que 'object_detected' es una variable booleana que indica si se detectó un objeto
+  // Escalar los valores leídos (0-1023) a un rango de 0-5V
+  float voltageScale = 5.0 / 1023.0;
+  float voltage11Scaled = voltage11 * voltageScale;
+  float voltage12Scaled = voltage12 * voltageScale;
+  float voltage10Scaled = voltage10 * voltageScale;
 
-  if (object_detected)
+  // Enviar los valores a través de la comunicación serial
+  Serial.print("Voltaje en Pin 11: ");
+  Serial.print(voltage11Scaled);
+  Serial.print("V\t");
+
+  Serial.print("Voltaje en Pin 12: ");
+  Serial.print(voltage12Scaled);
+  Serial.print("V\t");
+
+  Serial.print("Voltaje en Pin 10: ");
+  Serial.print(voltage10Scaled);
+  Serial.println("V");
+
+  if (Serial.available() > 0)
   {
-    // Se detectó "wall", mover los tres motores hacia adelante
-    moveMotorsForward();
-    delay(5000); // Esperar 5 segundos
-    stopMotors(); // Detener los motores
-  }
-  else if (candle_detected)
-  {
-    // Se detectó "candle", mover dos motores hacia atrás
-    moveMotorsBackward();
-    delay(5000); // Esperar 5 segundos
-    stopMotors(); // Detener los motores
-  }
+    command = Serial.read();
+    if (command == '1')
+    {
+      motorSpeed = 250;  // Velocidad para el comando '1'
+      motor2Speed = 250;
+      digitalWrite(in1, HIGH);
+      digitalWrite(in2, LOW);
 
-  // Continuar con la detección de objetos y control de motores
+      digitalWrite(in3, HIGH);
+      digitalWrite(in4, LOW);
+    }
+    else if (command == '0')
+    {
+      motorSpeed = 0;  // Velocidad para el comando '0'
+      motor2Speed = 0;
+      digitalWrite(in1, HIGH);
+      digitalWrite(in2, LOW);
+
+      digitalWrite(in3, HIGH);
+      digitalWrite(in4, LOW);
+    }
+
+    analogWrite(EnA, motorSpeed);  // Establecer la velocidad del motor
+    analogWrite(EnB, motor2Speed);  // Establecer la velocidad del motor
+  }
 }
