@@ -10,7 +10,7 @@ import serial
 model = torch.hub.load('ultralytics/yolov5', 'custom', path='python/modeloOG.pt')
 
 # Clases específicas que puede detectar el modelo
-CLASSES = ['wall', 'candle']
+CLASSES = ['wall', 'candle-on', 'candle-off']
 
 # Función para detectar y dibujar los objetos en la imagen de entrada
 def detect_objects(img, arduino):
@@ -24,18 +24,23 @@ def detect_objects(img, arduino):
     else:
         arduino.write(b'0')  # Enviar comando para apagar el LED en el puerto 3 (wall)
 
-    if 'candle' in result_data["name"].values:
+    if 'candle-on' in result_data["name"].values:
         arduino.write(b'2')  # Enviar comando para encender el LED en el puerto 2 (candle)
     else:
         arduino.write(b'3')  # Enviar comando para apagar el LED en el puerto 2 (candle)
-
+    
+    if 'candle-off' in result_data["name"].values:
+        arduino.write(b'4') # Enviar comando para encender el LED en el puerto 4 (candle-off)
+    else:
+        arduino.write(b'5') # Enviar comando para apagar el LED en el puerto 4 (candle-off)
+        
     return result_data
 
 # Abrir la cámara
 cap = cv2.VideoCapture(0)
 
 # Inicializar conexión con el Arduino
-arduino = serial.Serial('COM13', 9600)  # Reemplaza 'COM3' con el puerto serial correcto
+arduino = serial.Serial('COM10', 9600)  # Reemplaza 'COM3' con el puerto serial correcto
 
 while True:
     start_time = time.time()
