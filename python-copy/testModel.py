@@ -40,7 +40,7 @@ def detect_objects(img, arduino):
 cap = cv2.VideoCapture(0)
 
 # Inicializar conexión con el Arduino
-arduino = serial.Serial('COM10', 9600)  # Reemplaza 'COM3' con el puerto serial correcto
+arduino = serial.Serial('COM6', 9600)  # Reemplaza 'COM3' con el puerto serial correcto
 
 while True:
     start_time = time.time()
