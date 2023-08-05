@@ -7,11 +7,9 @@
   class Seguidor {
     private:
       int s1 = 0;
-      int s2 = 0;
-      int s3 = 0;
 
     public: 
-      Seguidor (int pin1, int pin2, int pin3);
+      Seguidor (int pin1);
         void iniciar();
         bool lineaCheckIndividual(byte sensor);
         bool lineaCheck();
