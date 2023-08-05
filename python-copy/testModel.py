@@ -17,30 +17,41 @@ def detect_objects(img, arduino):
     results = model(img)  # Hacer la detección de objetos con el modelo personalizado
     results.print()  # Mostrar las predicciones en la consola (opcional)
     result_data = results.pandas().xyxy[0]  # Obtener las coordenadas y etiquetas de las detecciones
-    
-    # Controlar los LEDs del Arduino
-    if 'wall' in result_data["name"].values:
-        arduino.write(b'1')  # Enviar comando para encender el LED en el puerto 3 (wall)
-    else:
-        arduino.write(b'0')  # Enviar comando para apagar el LED en el puerto 3 (wall)
 
-    if 'candle-on' in result_data["name"].values:
-        arduino.write(b'2')  # Enviar comando para encender el LED en el puerto 2 (candle)
-    else:
-        arduino.write(b'3')  # Enviar comando para apagar el LED en el puerto 2 (candle)
+    for _, row in result_data.iterrows():
+        x_min, y_min, x_max, y_max = row[["xmin", "ymin", "xmax", "ymax"]]
+        x_min, y_min, x_max, y_max = int(x_min), int(y_min), int(x_max), int(y_max)
     
-    if 'candle-off' in result_data["name"].values:
-        arduino.write(b'4') # Enviar comando para encender el LED en el puerto 4 (candle-off)
-    else:
-        arduino.write(b'5') # Enviar comando para apagar el LED en el puerto 4 (candle-off)
+    # # Controlar los LEDs del Arduino
+    # if 'wall' in result_data["name"].values:
+    #     arduino.write(b'1')  # Enviar comando para encender el LED en el puerto 3 (wall)
+    # else:
+    #     arduino.write(b'0')  # Enviar comando para apagar el LED en el puerto 3 (wall)
+
+    # if 'candle-on' in result_data["name"].values:
+    #     arduino.write(b'2')  # Enviar comando para encender el LED en el puerto 2 (candle)
+    # else:
+    #     arduino.write(b'3')  # Enviar comando para apagar el LED en el puerto 2 (candle)
+    
+    # if 'candle-off' in result_data["name"].values:
+    #     arduino.write(b'4') # Enviar comando para encender el LED en el puerto 4 (candle-off)
+    # else:
+    #     arduino.write(b'5') # Enviar comando para apagar el LED en el puerto 4 (candle-off)
         
     return result_data
 
+def coordenadas_a_bytes(x_min, x_max):
+    x_med = (x_min + x_max) / 2
+    x_med = x_med / 4
+    print(x_med * 4)
+    coordenadas_str = f"{x_med:.0f}"
+    return coordenadas_str.encode('utf-8')
+
 # Abrir la cámara
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(1) # 0 es cámara de la pc, 1 es webcam
 
 # Inicializar conexión con el Arduino
-arduino = serial.Serial('COM10', 9600)  # Reemplaza 'COM3' con el puerto serial correcto
+arduino = serial.Serial('/dev/cu.usbmodem1201', 9600)  # Reemplaza 'COM3' con el puerto serial correcto
 
 while True:
     start_time = time.time()
@@ -71,6 +82,10 @@ while True:
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
+
+    if 'candle' in result_data["name"].values:
+        arduino.write(coordenadas_a_bytes(x_min, x_max))
+        time.sleep(1)
 
     end_time = time.time()
     fps = 1 / (end_time - start_time)
