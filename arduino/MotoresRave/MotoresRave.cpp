@@ -74,3 +74,20 @@ void MotoresRave::movimiento(int degree, int velocidad){
     motor3.motorAtras();
   }
 }
+
+
+void MotoresRave::giro(bool direccion){
+
+  if (direccion == 0){ 		// izquierda
+    motor1.motorAdelante();
+    motor2.motorAtras();
+    motor3.motorAdelante();
+  }
+
+  else{		// derecha
+    motor1.motorAtras();
+    motor2.motorAdelante();
+    motor3.motorAtras();
+  }
+
+}
