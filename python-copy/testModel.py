@@ -51,7 +51,7 @@ def coordenadas_a_bytes(x_min, x_max):
 cap = cv2.VideoCapture(1) # 0 es cámara de la pc, 1 es webcam
 
 # Inicializar conexión con el Arduino
-arduino = serial.Serial('/dev/cu.usbmodem1201', 9600)  # Reemplaza 'COM3' con el puerto serial correcto
+arduino = serial.Serial('COM6', 9600)  # Reemplaza 'COM3' con el puerto serial correcto
 
 while True:
     start_time = time.time()
