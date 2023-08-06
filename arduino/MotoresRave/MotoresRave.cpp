@@ -76,7 +76,9 @@ void MotoresRave::movimiento(int degree, int velocidad){
 }
 
 
-void MotoresRave::giro(bool direccion){
+void MotoresRave::giro(bool direccion, int velocidad){
+
+  int velocidadMotor = constrain(velocidad, 0, 255)
 
   if (direccion == 0){ 		// izquierda
     motor1.motorAdelante();
@@ -89,5 +91,9 @@ void MotoresRave::giro(bool direccion){
     motor2.motorAdelante();
     motor3.motorAtras();
   }
+
+  analogWrite(motor1.getMotorSpeed(), velocidadMotor);
+  analogWrite(motor2.getMotorSpeed(), velocidadMotor);
+  analogWrite(motor3.getMotorSpeed(), velocidadMotor);
 
 }

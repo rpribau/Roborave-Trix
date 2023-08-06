@@ -1,4 +1,5 @@
 #include "Servo.h"
+#include "Ventilador.h"
 
 Ventilador::Ventilador (Servo ESC, int escPin){
     this-> ESC = ESC;

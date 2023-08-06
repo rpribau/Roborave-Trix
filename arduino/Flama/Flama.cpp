@@ -2,7 +2,7 @@
 #include "Flama.h"
 #include "Servo.h"
 
-Flama::Flama (int s1, int valorVela){
+Flama::Flama (uint8_t s1, int valorVela){
 
   this-> flama = s1;
   this-> valorVela = valorVela;

@@ -7,8 +7,8 @@
 
   class Flama {
     private: 
-      int flama = 0;
-      int valorVela = 0;
+      uint8_t flama;
+      int valorVela;
 /*
       int flama10 = 0; // Sensores (10cm, 20cm, 40cm)
       int flama20 = 0; 
@@ -23,7 +23,7 @@
 */
 
     public:
-      Flama (int s1, int valorVela);
+      Flama (uint8_t s1, int valorVela);
       bool check();
 /*
         void iniciar();
