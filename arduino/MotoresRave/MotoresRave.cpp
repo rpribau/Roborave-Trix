@@ -78,7 +78,7 @@ void MotoresRave::movimiento(int degree, int velocidad){
 
 void MotoresRave::giro(bool direccion, int velocidad){
 
-  int velocidadMotor = constrain(velocidad, 0, 255)
+  int velocidadMotor = constrain(velocidad, 0, 255);
 
   if (direccion == 0){ 		// izquierda
     motor1.motorAdelante();
