@@ -82,13 +82,13 @@ void MotoresRave::giro(bool direccion, int velocidad){
 
   if (direccion == 0){ 		// izquierda
     motor1.motorAdelante();
-    motor2.motorAtras();
+    motor2.motorAdelante();
     motor3.motorAdelante();
   }
 
-  else{		// derecha
+  else {		// derecha
     motor1.motorAtras();
-    motor2.motorAdelante();
+    motor2.motorAtras();
     motor3.motorAtras();
   }
 
