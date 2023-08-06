@@ -6,9 +6,11 @@
 
     class Ventilador {
         private:
+            Servo ESC;
+            int escPin;
 
         public:
-        Ventilador ();
+            Ventilador (Servo ESC, int escPin);
             void calibrar();
             void fuego();
     }
