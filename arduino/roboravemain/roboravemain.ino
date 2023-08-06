@@ -1,6 +1,7 @@
 #include <MotoresRave.h>
 #include <Ultrasonicos.h>
 #include <Ventilador.h>
+#include <Flama.h>
 #include "Wire.h"
 
 MotoresRave motores(12, 13, 11, 7, 8, 6, A0, 4, 3); // derecha, izquierda, atrás, viéndolo de frente
