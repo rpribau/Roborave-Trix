@@ -1,10 +1,13 @@
 #include "Servo.h"
 
-Ventilador::Ventilador (){};
+Ventilador::Ventilador (Servo ESC, int escPin){
+    this-> ESC = ESC;
+    this-> escPin = escPin;
+};
 
 void Ventilador::calibrar(){
 
-    ESC.attach(9,1000,2000);
+    ESC.attach(escPin);
     delay(2000);
     ESC.write(100);
     delay(500);

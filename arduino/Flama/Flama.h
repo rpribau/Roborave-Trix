@@ -24,7 +24,7 @@
 
     public:
       Flama (int s1, int valorVela);
-	bool check();
+      bool check();
 /*
         void iniciar();
         int checkIndividual(byte sensor);
