@@ -3,6 +3,7 @@
 
     #pragma once
     #include "Arduino.h"
+    #include "Servo.h"
 
     class Ventilador {
         private:
@@ -13,6 +14,6 @@
             Ventilador (Servo ESC, int escPin);
             void calibrar();
             void fuego();
-    }
+    };
 
 #endif
