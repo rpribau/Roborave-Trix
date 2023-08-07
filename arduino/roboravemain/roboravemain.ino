@@ -6,10 +6,10 @@
 #include <Servo.h>
 #include "Wire.h"
 
-MotoresRave motores(12, 13, 11, 7, 8, 6, A0, 4, 9); // Motor derecho, motor izquierdo, motor trasero
+MotoresRave motores(12, 13, 11, 7, 8, 6, A0, 4, 5); // Motor derecho, motor izquierdo, motor trasero
 // viéndolo de frente al robot. Cada uno tiene 3 pines: enable, input1 e input2
 
-Ultrasonicos sensoresUltrasonicos(10, A3, 2, A5); // Sensor ultrasónico izquierdo y derecho. Cada uno tiene
+Ultrasonicos sensoresUltrasonicos(A1, A3, 2, A5); // Sensor ultrasónico izquierdo y derecho. Cada uno tiene
 // 2 pines: trig y echo
 
 Flama flama(A4, 100); // Sensor de flama. Tiene 1 pin y un valor mínimo de detección de flama
@@ -28,7 +28,7 @@ bool fuego = false; // Variable que menciona la detección o no de flama
 int distanciaIz; // Variable que contiene la distancia detectada por el sensor ultrasónico izquierdo de un objeto externo
 int distanciaDe; // Variable que contiene la distancia detectada por el sensor ultrasónico derecho de un objeto externo
 boolean vela_prendida = false; // Variable que menciona si una vela está prendida
-int velocidad = 100;
+int velocidad = 110;
 
 void setup() {
 
@@ -97,8 +97,6 @@ void loop() {
       } 
       
     }
-    
-  delay(200);
 }
 
 void apagar(){
