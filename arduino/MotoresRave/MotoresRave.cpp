@@ -97,3 +97,11 @@ void MotoresRave::giro(bool direccion, int velocidad){
   analogWrite(motor3.getMotorSpeed(), velocidadMotor);
 
 }
+
+void MotoresRave::alto() {
+  
+  motor1.motorAlto();
+  motor2.motorAlto();
+  motor3.motorAlto();
+
+}

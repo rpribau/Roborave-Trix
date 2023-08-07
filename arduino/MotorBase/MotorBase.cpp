@@ -25,6 +25,11 @@ void MotorBase::motorAtras(){
   digitalWrite(pin2,HIGH);
 }
 
+void MotorBase::motorAlto() {
+  digitalWrite(pin1, LOW);
+  digitalWrite(pin2, LOW);
+}
+
 int MotorBase::getMotorSpeed(){
   return motorSpeed;
 }
