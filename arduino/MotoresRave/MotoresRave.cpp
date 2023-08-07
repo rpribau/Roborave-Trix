@@ -82,18 +82,26 @@ void MotoresRave::giro(bool direccion, int velocidad){
 
   if (direccion == 0){ 		// izquierda
     motor1.motorAdelante();
-    motor2.motorAtras();
+    motor2.motorAdelante();
     motor3.motorAdelante();
   }
 
   else{		// derecha
     motor1.motorAtras();
-    motor2.motorAdelante();
+    motor2.motorAtras();
     motor3.motorAtras();
   }
 
   analogWrite(motor1.getMotorSpeed(), velocidadMotor);
   analogWrite(motor2.getMotorSpeed(), velocidadMotor);
   analogWrite(motor3.getMotorSpeed(), velocidadMotor);
+
+}
+
+void MotoresRave::alto() {
+  
+  motor1.motorAlto();
+  motor2.motorAlto();
+  motor3.motorAlto();
 
 }

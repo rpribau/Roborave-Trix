@@ -16,6 +16,7 @@
       void movimiento(int degree, int velocidad);
       void adelante(int motor);
       void giro(bool direccion, int velocidad);
+      void alto();
 
   };
 

@@ -15,6 +15,7 @@
       void iniciarMotor();
       void motorAdelante();
       void motorAtras();
+      void motorAlto();
       int getMotorSpeed();
   
   };
