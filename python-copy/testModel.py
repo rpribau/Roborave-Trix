@@ -51,7 +51,7 @@ def coordenadas_a_bytes(x_min, x_max):
 cap = cv2.VideoCapture(1) # 0 es cámara de la pc, 1 es webcam
 
 # Inicializar conexión con el Arduino
-arduino = serial.Serial('COM6', 9600)  # Reemplaza 'COM3' con el puerto serial correcto
+arduino = serial.Serial('COM10', 9600)  # Reemplaza 'COM3' con el puerto serial correcto
 
 while True:
     start_time = time.time()
@@ -83,9 +83,12 @@ while True:
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
-    if 'candle' in result_data["name"].values:
+    #if 'candle' in result_data["name"].values:
+     #   arduino.write(coordenadas_a_bytes(x_min, x_max))
+      #  time.sleep(1)
+
+    if arduino.readline().decode().strip == "12":
         arduino.write(coordenadas_a_bytes(x_min, x_max))
-        time.sleep(1)
 
     end_time = time.time()
     fps = 1 / (end_time - start_time)
